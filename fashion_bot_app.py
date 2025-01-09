@@ -21,6 +21,8 @@ TWEAKS = {
   "TextInput-KwRKr": {}
 }
 
+logging.basicConfig(level=logging.INFO)
+
 def run_flow(message: str,
   endpoint: str,
   output_type: str = "chat",
@@ -79,7 +81,7 @@ def main():
 
         #text inputs for user to specify input value 
         body_shape = st.text_input("Body shape: ", placeholder="Please provide your body shape here.")
-        skin_tone = st.text_input("skin tone: ", placeholder="Please provide your skin tone here.")
+        skin_tone = st.text_input("Skin tone: ", placeholder="Please provide your skin tone here.")
 
         #if these inputs are provided, update TWEAKS (UPD)
         if body_shape:
