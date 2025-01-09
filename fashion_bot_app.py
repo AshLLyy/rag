@@ -10,6 +10,16 @@ ENDPOINT = "fashion" # The endpoint name of the flow
 
 # You can tweak the flow by adding a tweaks dictionary
 # e.g {"OpenAI-XXXXX": {"model_name": "gpt-4"}}
+TWEAKS = {
+  "ChatInput-1HPhr": {},
+  "OpenAIModel-yAmO2": {},
+  "Prompt-dHJOb": {},
+  "ChatOutput-l41MR": {},
+  "Memory-J95HC": {},
+  "TextInput-GBnao": {},
+  "Prompt-SdNnw": {},
+  "TextInput-KwRKr": {}
+}
 
 def run_flow(message: str,
   endpoint: str,
@@ -38,7 +48,6 @@ def run_flow(message: str,
     if api_key:
         headers = {"x-api-key": api_key}
     response = requests.post(api_url, json=payload, headers=headers)
-    return response.json()
 
     #log the reponse for debugging
     logging.info(f"Response Status Code: {response.status_code}")
@@ -73,6 +82,10 @@ def main():
         skin_tone = st.text_input("skin tone: ", placeholder="Please provide your skin tone here.")
 
         #if these inputs are provided, update TWEAKS (UPD)
+        if body_shape:
+            TWEAKS["TextInput-GBnao"]['input_value'] = body_shape
+        if skin_tone:
+            TWEAKS["TextInput-KwRKr"]['input_value'] = skin_tone
 
         st.success("Parameters updated successfull")
 
@@ -103,7 +116,7 @@ def main():
             message_placeholder = st.empty()
             with st.spinner("Thinking..."):
                 #Fetch response from langflow with updated TWEAKS and using query
-                assistant_response = extract_message(run_flow(query, endpoint=ENDPOINT))
+                assistant_response = extract_message(run_flow(query, endpoint=ENDPOINT, tweaks=TWEAKS))
                 message_placeholder.write(assistant_response)
 
         #add assistant ressponse to session state
