@@ -1,4 +1,3 @@
-#%%
 import streamlit as st
 import requests
 import json
@@ -49,6 +48,7 @@ def run_flow(message: str,
     if api_key:
         headers = {"x-api-key": api_key}
     response = requests.post(api_url, json=payload, headers=headers)
+    return response.json()
 
     #log the reponse for debugging
     logging.info(f"Response Status Code: {response.status_code}")
