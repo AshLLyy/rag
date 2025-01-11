@@ -4,7 +4,7 @@ import json
 import logging
 from typing import Optional
 
-BASE_API_URL = "http://127.0.0.1:7860"
+BASE_API_URL = "https://0207-2001-d08-102c-8e4a-35ca-d80e-1e64-5457.ngrok-free.app"
 FLOW_ID = "6ae668ee-608d-4ac4-83b4-5121d0e4d1a0"
 ENDPOINT = "fashion" # The endpoint name of the flow
 
