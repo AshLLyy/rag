@@ -4,7 +4,7 @@ import json
 import logging
 from typing import Optional
 
-BASE_API_URL = "http://127.0.0.1:7860"
+BASE_API_URL = "http://127.0.0.1:4040"
 FLOW_ID = "6ae668ee-608d-4ac4-83b4-5121d0e4d1a0"
 ENDPOINT = "fashion" # The endpoint name of the flow
 
